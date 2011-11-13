@@ -17,7 +17,7 @@ limitations under the License.
 package store
 
 import (
-	"http"
+	"url"
 	"time"
 )
 
@@ -132,7 +132,7 @@ type Post struct {
 	CanonicalPath string
 
 	// The blog url to use when talking to external sites.
-	CanonicalBlogUrl *http.URL
+	CanonicalBlogUrl *url.URL
 
 	// Cached data.
 	CachedPost             []byte

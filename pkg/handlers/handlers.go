@@ -25,7 +25,7 @@ import (
 	"io/ioutil"
 	"path"
 	"strings"
-	"template"
+	"old/template"
 )
 
 var flagTemplatePath *string = flag.String("tmpl", "tmpl", "Path to the templates")

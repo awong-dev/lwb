@@ -17,11 +17,11 @@ limitations under the License.
 package lwb
 
 import (
-	"http"
+	"url"
 )
 
 type BlogConfig struct {
-	BlogUrl     *http.URL
+	BlogUrl     *url.URL
 	Author      string
 	Title       string
 	Description string

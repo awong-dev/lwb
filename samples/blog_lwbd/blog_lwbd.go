@@ -25,11 +25,11 @@ import (
 	"github.com/stevela/lwb/handlers"
 	"github.com/stevela/lwb/lwb"
 	"github.com/stevela/lwb/store"
-	"http"
 	"log"
 	"net"
 	"os"
 	"sort"
+	"url"
 )
 
 var flagDebug *bool = flag.Bool("debug", false, "Run in debug mode")
@@ -94,7 +94,7 @@ func main() {
 	flag.Parse()
 
 	var err os.Error
-	if config.BlogUrl, err = http.ParseURL(fmt.Sprintf("%s://%s", *flagProtocol, *flagHost)); err != nil {
+	if config.BlogUrl, err = url.Parse(fmt.Sprintf("%s://%s", *flagProtocol, *flagHost)); err != nil {
 		panic("Invalid protocol and/or host")
 	}
 
@@ -111,8 +111,8 @@ func main() {
 	// Context for rendering.
 	tags := db.GetTags()
 	categories := db.GetCategories()
-	sort.SortStrings(tags)
-	sort.SortStrings(categories)
+	sort.Strings(tags)
+	sort.Strings(categories)
 
 	context := &handlers.RenderContext{
 		Db:          db,
